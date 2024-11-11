@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String Operations Example</title>
+</head>
+<body>
+    <h1>JavaScript String Operations</h1>
+    <pre id="output"></pre>
+
+    <script>
+        function log(message) {
+            var outputElement = document.getElementById("output");
+            outputElement.textContent += message + "\n";
+        }
+
+        // String concatenation
+        var firstName = "John";
+        var lastName = "Doe";
+        var fullName = firstName + " " + lastName;
+        log("Full name (concatenation): " + fullName);
+
+        // String concatenation using template literals (ES6)
+        var fullNameTemplate = `${firstName} ${lastName}`;
+        log("Full name (template literals): " + fullNameTemplate);
+
+        // String length
+        var nameLength = fullName.length;
+        log("Length of full name: " + nameLength);
+
+        // Slicing strings
+        var sliceExample = "Hello, world!";
+        var sliced = sliceExample.slice(0, 5); // Start at index 0, end before index 5
+        log("Sliced string: " + sliced);
+
+        // Alternatively, you can use substring() method
+        var substringed = sliceExample.substring(0, 5); // Start at index 0, end before index 5
+        log("Substringed string: " + substringed);
+
+        // Dicing strings (splitting)
+        var stringToSplit = "apple,banana,orange";
+        var splitArray = stringToSplit.split(","); // Split the string on comma character
+        log("Split string into array: " + JSON.stringify(splitArray));
+
+        // String casing
+        var originalString = "JavaScript is Fun!";
+        var upperCased = originalString.toUpperCase();
+        var lowerCased = originalString.toLowerCase();
+
+        log("Original string: " + originalString);
+        log("Uppercased string: " + upperCased);
+        log("Lowercased string: " + lowerCased);
+    </script>
+</body>
+</html>

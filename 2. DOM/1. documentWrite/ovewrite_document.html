@@ -1,0 +1,51 @@
+<!DOCTYPE html> <!-- Step 1: Declare our doctype. Like saying "Hello, I'm an HTML5 doc!" -->
+<html lang="en"> <!-- Start of our HTML journey and we're speaking in English (en). -->
+
+<head> <!-- Think of this as the brain of our page. It has all the metadata. -->
+    <meta charset="UTF-8">
+    <!-- We're all about inclusivity. Using UTF-8 to include many characters from various languages. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Responsiveness: Because our page looks good on all devices. -->
+    <title>Document Write Overwrite Example</title> <!-- What's in a name? Our page's name/title! -->
+
+    <style>
+        <!-- Some style, because our page deserves to look fancy. 
+        -->
+        #overwriteBtn
+        {
+        margin-top:
+        20px;
+        /*
+        Giving
+        our
+        button
+        some
+        personal
+        space
+        up
+        top.
+        */
+        }
+    </style>
+</head>
+
+<body> <!-- The body! Where the action happens. Think of it as the stage for our content. -->
+
+    <h1>Original Content</h1> <!-- Loud and clear! Our main heading. -->
+    <p>This is the original content of the page.</p> <!-- Some info text, just hanging out and setting context. -->
+    <button id="overwriteBtn">Overwrite content</button> <!-- Our interactive button. Click with caution! -->
+
+    <script> <!-- Time for some JavaScript magic! -->
+        // Grabbing our button by its unique ID. It's like calling its name in a crowded room.
+        document.getElementById("overwriteBtn").addEventListener("click", function () {
+            // Overwriting 101: When the button is clicked, we're changing everything!
+            document.write("<h1>Overwritten Content</h1>");
+            // More overwriting, because why stop at the title?
+            document.write("<p>The original content has been overwritten using document.write()</p>");
+        });
+    // Note for students: Overwriting the entire content can be disruptive. Use with caution in real-world apps!
+    </script>
+
+</body> <!-- End of the body. Taking a bow after our performance. -->
+
+</html> <!-- Goodbye HTML. It was a good run! -->

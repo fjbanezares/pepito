@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Attr Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <img id="imageElement" src="https://via.placeholder.com/150" alt="Placeholder Image">
+    <button id="getSrc">Get Image Source</button>
+    <button id="setSrc">Set Image Source</button>
+
+    <script>
+        $("#getSrc").click(function () {
+            const imageSrc = $("#imageElement").attr("src");
+            alert("Image source: " + imageSrc);
+        });
+
+        $("#setSrc").click(function () {
+            $("#imageElement").attr("src", "https://via.placeholder.com/300");
+        });
+    </script>
+</body>
+
+</html>

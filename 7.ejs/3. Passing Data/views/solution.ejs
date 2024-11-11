@@ -1,0 +1,48 @@
+<!-- This declares the document to be HTML5 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- The character set declaration for the document -->
+  <meta charset="UTF-8">
+
+  <!-- This meta tag ensures proper rendering and touch zooming on mobile devices. 
+       width=device-width sets the width of the page to follow the screen width of the device.
+       initial-scale=1.0 sets the initial zoom level when the page is loaded. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- The title of the page that appears on the browser tab -->
+  <title>Name Letters</title>
+</head>
+
+<body>
+  <!-- EJS (Embedded JavaScript) syntax. The following code checks if the numberOfLetters variable exists. -->
+  <% if (locals.numberOfLetters) { %>
+
+    <!-- If numberOfLetters exists, it displays this header with the number of letters in the user's name. 
+         <%= %> outputs the value of the variable. -->
+    <h1>There are <%= numberOfLetters %> letters in your name.</h1>
+
+    <% } else { %>
+
+      <!-- If numberOfLetters does not exist or is not provided, it prompts the user to enter their name. -->
+      <h1>Enter your name below 👇</h1>
+
+      <% } %>
+
+        <!-- This is a form that sends a POST request to the /submit route when submitted. -->
+        <form action="/submit" method="POST">
+
+          <!-- A text input field for the user's first name. The name attribute specifies the name for the input element, which is sent to the server when the form is submitted. -->
+          <input type="text" name="fName" placeholder="First name">
+
+          <!-- A text input field for the user's last name. -->
+          <input type="text" name="lName" placeholder="Last name">
+
+          <!-- The submit button for the form. When clicked, the form data is sent to the server. -->
+          <input type="submit" value="OK">
+
+        </form>
+</body>
+
+</html>

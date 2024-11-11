@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>innerHTML vs textContent</title>
+    <style>
+        /* Simple CSS to style the output div and buttons */
+        #output {
+            border: 1px solid #000;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- This div is where the innerHTML or textContent will be displayed -->
+    <div id="output">Default content</div>
+
+    <!-- Button to demonstrate innerHTML -->
+    <button id="htmlButton">Insert HTML Content</button>
+
+    <!-- Button to demonstrate textContent -->
+    <button id="textButton">Insert Text Content</button>
+
+    <!-- Button to change style -->
+    <button id="styleButton">Change Style</button>
+
+    <script>
+        // Access the buttons and output div by their IDs
+        const htmlButton = document.getElementById('htmlButton');
+        const textButton = document.getElementById('textButton');
+        const styleButton = document.getElementById('styleButton');
+        const output = document.getElementById('output');
+
+        // Event listener for innerHTML button
+        htmlButton.addEventListener('click', function () {
+            // Using innerHTML to set HTML content inside the output div
+            // This will parse the string as HTML, rendering the tags
+            output.innerHTML = '<strong>This is bold</strong> and <em>this is italic</em> text.';
+        });
+
+        // Event listener for textContent button
+        textButton.addEventListener('click', function () {
+            // Using textContent to set text inside the output div
+            // This treats the string as plain text, not parsing any HTML tags
+            output.textContent = '<strong>This will not be bold</strong>, just plain text.';
+        });
+
+        // Event listener for style button
+        styleButton.addEventListener('click', function () {
+            // Changing the style of the output div
+            // This will change the text color to blue
+            output.style.color = 'blue';
+            // And change the font size to 20px
+            output.style.fontSize = '20px';
+        });
+    </script>
+
+</body>
+
+</html>

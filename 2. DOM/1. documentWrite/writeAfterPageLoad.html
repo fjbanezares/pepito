@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Page Title</title>
+</head>
+
+<body>
+
+    <p>Some content that will be overwritten</p>
+
+    <script>
+        // Wait for 3 seconds after the page loads, then overwrite the content
+        window.onload = function () {
+            setTimeout(function () {
+                document.write('<h1>All previous content has been overwritten</h1>');
+            }, 3000); // 3000 milliseconds = 3 seconds
+        };
+    </script>
+
+</body>
+
+</html>

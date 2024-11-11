@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Arrays</title>
+</head>
+<body>
+    <h1>PEPEEPPE</h1>
+    <script>
+        // Creating an array
+        const numbers = [1, 2, 3, 4, 5];
+        document.write("Array: " + numbers + "<br>");
+
+
+        // Array properties
+        document.write("Array length: " + numbers.length + "<br>");
+
+        // Iterating array using for loop
+        document.write("Using for loop:<br>");
+        for (let i = 0; i < numbers.length; i++) {
+            document.write(numbers[i] + "<br>");
+        }
+
+        // Iterating array using forEach
+        document.write("Using forEach:<br>");
+        numbers.forEach(function (number) {
+            document.write(number + "<br>");
+        });
+
+        // Check if array includes a value
+        const valueToFind = 3;
+        if (numbers.includes(valueToFind)) {
+            document.write("The array includes " + valueToFind + "<br>");
+        } else {
+            document.write("The array does not include " + valueToFind + "<br>");
+        }
+
+        // Adding an element to the end of the array
+        numbers.push(6);
+        document.write("After push: " + numbers + "<br>");
+
+        // Removing an element from the end of the array
+        numbers.pop();
+        document.write("After pop: " + numbers + "<br>");
+
+        // Adding an element to the beginning of the array
+        numbers.unshift(0);
+        document.write("After unshift: " + numbers + "<br>");
+
+        // Removing an element from the beginning of the array
+        numbers.shift();
+        document.write("After shift: " + numbers + "<br>");
+
+        // Slicing an array
+        const sliced = numbers.slice(1, 4);
+        document.write("Sliced array: " + sliced + "<br>");
+
+        // Reversing an array
+        const reversed = numbers.slice().reverse();
+        document.write("Reversed array: " + reversed + "<br>");
+
+        // Joining an array into a string
+        const joined = numbers.join(', ');
+        document.write("Joined array: " + joined + "<br>");
+    </script>
+    <h1>OEOEOEOOE</h1>
+</body>
+</html>

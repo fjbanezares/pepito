@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manipulate Content and Style</title>
+    <style>
+        #output {
+            border: 1px solid #000;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        button {
+            margin-top: 10px;
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+
+        .invisible {
+            display: none;
+            /* This class will hide the element */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Output div where content will be manipulated -->
+    <div id="output">Some default content</div>
+
+    <!-- Button to add HTML content -->
+    <button id="htmlButton">Insert HTML Content</button>
+
+    <!-- Button to add text content -->
+    <button id="textButton">Insert Text Content</button>
+
+    <!-- Button to toggle visibility -->
+    <button id="toggleVisibilityButton">Toggle Visibility</button>
+
+    <script>
+
+        globalThis.myGlobalVar = 'Hello, global!';
+        alert(myGlobalVar); // logs "Hello, global!"
+
+        window.anotherGlobalVar = 'Hello, global!';
+        alert(anotherGlobalVar); // logs "Hello, global!"
+
+        // global.anotherGlobalVar = 'Hello, global!';
+        // alert(anotherGlobalVar); // logs "Hello, global!"
+
+        const htmlButton = document.getElementById('htmlButton');
+        const textButton = document.getElementById('textButton');
+        const toggleVisibilityButton = document.getElementById('toggleVisibilityButton');
+        const output = document.getElementById('output');
+
+        // When the HTML button is clicked, insert HTML conten–––––t
+        htmlButton.addEventListener('click', function () {
+            output.innerHTML = '<strong>Bold HTML content</strong> with some <em>italic</em>.';
+        });
+
+        // When the Text button is clicked, insert text content
+        textButton.addEventListener('click', function () {
+            output.textContent = 'Just plain text content, no HTML rendered.';
+        });
+
+        // When the Toggle Visibility button is clicked, add/remove the "invisible" class
+        toggleVisibilityButton.addEventListener('click', function () {
+            // This will check if the "invisible" class is present and toggle it
+            output.classList.toggle('invisible');
+        });
+    </script>
+
+</body>
+
+</html>

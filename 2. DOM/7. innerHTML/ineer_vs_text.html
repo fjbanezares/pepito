@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Content Manipulation Example</title>
+    <style>
+        .output {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin: 10px 0;
+            background-color: #f9f9f9;
+        }
+
+        .alert {
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Secure Content Manipulation with JavaScript</h1>
+    <p>Enter content to display below:</p>
+
+    <!-- Input field for user-generated content -->
+    <input type="text" id="userInput" placeholder="Enter some text...">
+    <button onclick="displayUsingInnerHTML()">Display with innerHTML</button>
+    <button onclick="displayUsingTextContent()">Display with textContent</button>
+
+    <!-- Containers to show output -->
+    <div id="innerHTMLOutput" class="output">
+        <strong>innerHTML Output:</strong>
+        <p id="innerHTMLContent" class="alert">[Content will be injected here]</p>
+    </div>
+    <div id="textContentOutput" class="output">
+        <strong>textContent Output:</strong>
+        <p id="textContentContent">[Content will be injected here]</p>
+    </div>
+
+    <script>
+        // Function that uses innerHTML to display user input
+        function displayUsingInnerHTML() {
+            const userInput = document.getElementById('userInput').value;
+
+            // Warning: Using innerHTML can be dangerous with unsanitized user input
+            document.getElementById('innerHTMLContent').innerHTML = userInput;
+
+            // Explanation message
+            alert('Using innerHTML can make the application vulnerable if malicious scripts are injected.');
+        }
+
+        // Function that uses textContent to display user input
+        function displayUsingTextContent() {
+            const userInput = document.getElementById('userInput').value;
+
+            // Safe approach: textContent treats input as plain text and avoids script execution
+            document.getElementById('textContentContent').textContent = userInput;
+
+            // Explanation message
+            alert('Using textContent is safer as it prevents scripts from being interpreted.');
+        }
+    </script>
+</body>
+
+</html>

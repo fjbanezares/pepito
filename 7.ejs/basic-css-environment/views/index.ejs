@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My App</title>
+    <% if (environment==='production' ) { %>
+        <link href="css/production/sign-in.css" rel="stylesheet">
+        <% } else { %>
+            <link href="css/pre/sign-in.css" rel="stylesheet">
+            <% } %>
+</head>
+
+<body>
+    <div class="container">
+        <h1>My App</h1>
+        <p>Welcome to my app!</p>
+        <button>Get Started</button>
+    </div>
+</body>
+
+</html>

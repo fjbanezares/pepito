@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Traversal Example</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+
+    <ul id="list">
+        <li>First Item</li>
+        <li id="myId">Second Item (ID: myId)
+            <ul>
+                <li>Child 1</li>
+                <li>Child 2</li>
+            </ul>
+        </li>
+        <li>Third Item</li>
+    </ul>
+
+    <button onclick="highlightParent()">Highlight Parent</button>
+    <button onclick="highlightFirstChild()">Highlight First Child</button>
+    <button onclick="highlightLastChild()">Highlight Last Child</button>
+    <button onclick="highlightNextSibling()">Highlight Next Sibling</button>
+    <button onclick="highlightPreviousSibling()">Highlight Previous Sibling</button>
+
+    <script>
+        function highlightParent() {
+            resetHighlights();
+            const parentElement = document.getElementById("myId").parentNode;
+            parentElement.classList.add('highlight');
+        }
+
+        function highlightFirstChild() {
+            resetHighlights();
+            const firstChild = document.getElementById("myId").firstElementChild.firstElementChild;
+            firstChild.classList.add('highlight');
+        }
+
+        function highlightLastChild() {
+            resetHighlights();
+            const lastChild = document.getElementById("myId").lastElementChild.lastElementChild;
+            lastChild.classList.add('highlight');
+        }
+
+        function highlightNextSibling() {
+            resetHighlights();
+            const nextSibling = document.getElementById("myId").nextElementSibling;
+            nextSibling.classList.add('highlight');
+        }
+
+        function highlightPreviousSibling() {
+            resetHighlights();
+            const previousSibling = document.getElementById("myId").previousElementSibling;
+            previousSibling.classList.add('highlight');
+        }
+
+        function resetHighlights() {
+            document.querySelectorAll('.highlight').forEach(function (element) {
+                element.classList.remove('highlight');
+            });
+        }
+    </script>
+
+</body>
+
+</html>

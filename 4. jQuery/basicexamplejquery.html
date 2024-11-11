@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Style Example</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        .pepito {
+            font-weight: bold;
+            color: cyan;
+            background-color: pink;
+
+        }
+
+        .changedStyles {
+            background-color: blue;
+            font-size: 20px;
+            color: white;
+        }
+
+        .newClassName {
+            font-weight: bold;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="elementId" class="pepito">This is a div with an ID.</div>
+    <button id="changeStyle">Change Style</button>
+
+    <script>
+        $("#changeStyle").click(function () {
+            $("#elementId").toggleClass("changedStyles");
+            $("#elementId").toggleClass("newClassName");
+        });
+    </script>
+</body>
+
+</html>

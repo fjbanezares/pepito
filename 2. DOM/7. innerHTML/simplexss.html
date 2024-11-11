@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>XSS with CSS Injection Example</title>
+</head>
+
+<body>
+
+    <h1>Profile Page</h1>
+
+    <div id="profile" style="background-image: url('user-provided-url')">
+        <p>Welcome, <span id="username"></span>!</p>
+    </div>
+
+    <script>
+        // Simulate user input (in a real scenario, this would come from a database or other source)
+        const userInput = "javascript:alert('XSS!')"; // Malicious input
+
+        // Inject the user input into the style attribute
+        const profileDiv = document.getElementById('profile');
+        profileDiv.style.backgroundImage = `url("${userInput}")`; 
+    </script>
+
+</body>
+
+</html>

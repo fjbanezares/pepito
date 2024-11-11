@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dice Roll Simulation</title>
+  <style>
+    .result {
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Dice Roll Simulation</h1>
+  
+  <button id="rollBtn">Roll the dice</button>
+  <div class="result" id="result"></div>
+
+  <script>
+    const rollBtn = document.getElementById('rollBtn');
+    const result = document.getElementById('result');
+
+    function rollDice() {
+      return Math.floor(Math.random() * 6) + 1;
+    }
+
+    rollBtn.addEventListener('click', function() {
+      const diceRoll = rollDice();
+      result.textContent = `You rolled: ${diceRoll}`;
+    });
+  </script>
+</body>
+</html>

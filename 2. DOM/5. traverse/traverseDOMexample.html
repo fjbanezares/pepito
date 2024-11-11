@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Traversal Example</title>
+    <style>
+        /* Basic styling for elements */
+        .container {
+            margin: 20px;
+            padding: 10px;
+            border: 2px solid black;
+        }
+
+        .element {
+            padding: 10px;
+            margin: 5px;
+            background-color: lightblue;
+            border: 1px solid blue;
+        }
+
+        .output-section {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+
+        .output-box {
+            margin: 5px 0;
+            padding: 5px;
+            border: 1px dashed gray;
+            background-color: #e8f0fe;
+        }
+
+        .output-title {
+            font-weight: bold;
+            color: #333;
+        }
+
+        button {
+            margin: 5px;
+            padding: 8px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Interactive DOM Traversal Example</h1>
+    <p>Click the buttons to see different DOM relationships for the selected element.</p>
+
+    <!-- Sample elements to traverse -->
+    <div id="parent" class="container">
+        Parent Element
+        <div id="child1" class="element">First Child Element</div>
+        <div id="child2" class="element">Second Child Element</div>
+        <div id="child3" class="element">Last Child Element</div>
+    </div>
+
+    <!-- Buttons for each DOM traversal method -->
+    <button id="showParent">Show Parent Node</button>
+    <button id="showFirstChild">Show First Child</button>
+    <button id="showLastChild">Show Last Child</button>
+    <button id="showNextSibling">Show Next Sibling of Child 1</button>
+    <button id="showPreviousSibling">Show Previous Sibling of Child 3</button>
+
+    <!-- Section to display results -->
+    <div id="output" class="output-section">
+        <p class="output-title">DOM Relationships:</p>
+    </div>
+
+    <script>
+        // Select the elements for DOM traversal
+        const parentElement = document.getElementById("parent");
+        const firstChild = document.getElementById("child1");
+        const lastChild = document.getElementById("child3");
+
+        // Output container to show results
+        const outputSection = document.getElementById("output");
+
+        // Function to clear the output before displaying new information
+        function clearOutput() {
+            outputSection.innerHTML = '<p class="output-title">DOM Relationships:</p>';
+        }
+
+        // Function to display information in the output section
+        function displayInfo(title, content) {
+            const box = document.createElement("div");
+            box.classList.add("output-box");
+            box.innerHTML = `<strong>${title}:</strong> ${content}`;
+            outputSection.appendChild(box);
+        }
+
+        // Button event listeners for each DOM traversal method
+
+        // Show Parent Node of the "parent" element
+        document.getElementById("showParent").addEventListener("click", function () {
+            clearOutput();
+            const parentNode = parentElement.parentNode;
+            displayInfo("Parent Node", `The parent of the "parent" div is: ${parentNode.nodeName}`);
+        });
+
+        // Show First Child of the "parent" element
+        document.getElementById("showFirstChild").addEventListener("click", function () {
+            clearOutput();
+            const firstChildNode = parentElement.firstChild; // First child can sometimes include text nodes (spaces), so we might want to use firstElementChild for element only
+            const firstElementChild = parentElement.firstElementChild; // Ensures we get the first element child only
+            displayInfo("First Child (including all nodes)", firstChildNode ? `Node name: ${firstChildNode.nodeName}` : "No child found");
+            displayInfo("First Child Element", firstElementChild ? `Node name: ${firstElementChild.nodeName}, Text: ${firstElementChild.textContent}` : "No element child found");
+        });
+
+        // Show Last Child of the "parent" element
+        document.getElementById("showLastChild").addEventListener("click", function () {
+            clearOutput();
+            const lastChildNode = parentElement.lastChild; // Last child might include non-element nodes
+            const lastElementChild = parentElement.lastElementChild; // Ensures we get the last element child only
+            displayInfo("Last Child (including all nodes)", lastChildNode ? `Node name: ${lastChildNode.nodeName}` : "No child found");
+            displayInfo("Last Child Element", lastElementChild ? `Node name: ${lastElementChild.nodeName}, Text: ${lastElementChild.textContent}` : "No element child found");
+        });
+
+        // Show Next Sibling of "firstChild" element
+        document.getElementById("showNextSibling").addEventListener("click", function () {
+            clearOutput();
+            const nextSiblingNode = firstChild.nextSibling; // Includes all node types (text nodes, elements)
+            const nextElementSibling = firstChild.nextElementSibling; // Only the next element sibling
+            displayInfo("Next Sibling (including all nodes)", nextSiblingNode ? `Node name: ${nextSiblingNode.nodeName}` : "No next sibling found");
+            displayInfo("Next Element Sibling", nextElementSibling ? `Node name: ${nextElementSibling.nodeName}, Text: ${nextElementSibling.textContent}` : "No next element sibling found");
+        });
+
+        // Show Previous Sibling of "lastChild" element
+        document.getElementById("showPreviousSibling").addEventListener("click", function () {
+            clearOutput();
+            const previousSiblingNode = lastChild.previousSibling; // Includes all node types
+            const previousElementSibling = lastChild.previousElementSibling; // Only the previous element sibling
+            displayInfo("Previous Sibling (including all nodes)", previousSiblingNode ? `Node name: ${previousSiblingNode.nodeName}` : "No previous sibling found");
+            displayInfo("Previous Element Sibling", previousElementSibling ? `Node name: ${previousElementSibling.nodeName}, Text: ${previousElementSibling.textContent}` : "No previous element sibling found");
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Var vs Let vs Const</title>
+</head>
+
+<body style="background-color: greenyellow;">
+    <h2>Var vs Let vs Const</h2>
+    <p id="varTest"></p>
+    <p id="letTest"></p>
+    <p id="constTest"></p>
+
+    <ul>
+        <li id="li1"></li>
+        <li id="li2"></li>
+        <li id="li3"></li>
+    </ul>
+
+    <script>
+        var myVar = "This is a global variable declared with var.";
+        let myLet = "This is a global variable declared with let.";
+        const myConst = "This is a global variable declared with const.";
+
+        // Check if they are properties of the global object:
+        document.getElementById("varTest").textContent = "Is myVar on window? " + ('myVar' in window);
+        document.getElementById("letTest").textContent = "Is myLet on window? " + ('myLet' in window);
+        document.getElementById("constTest").textContent = "Is myConst on window? " + ('myConst' in window);
+
+        document.getElementById("li1").textContent = myVar;
+        document.getElementById("li2").textContent = myLet;
+        document.getElementById("li3").textContent = myConst;
+    </script>
+</body>
+
+</html>

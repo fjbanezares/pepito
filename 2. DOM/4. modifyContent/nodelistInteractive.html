@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodeList and Array Conversion Example</title>
+    <style>
+        .item {
+            padding: 10px;
+            margin: 5px;
+            background-color: lightblue;
+            border: 1px solid blue;
+        }
+
+        .output-section {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+
+        .output-title {
+            font-weight: bold;
+        }
+
+        .output-box {
+            padding: 5px;
+            border: 1px dashed gray;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Interactive NodeList Example</h1>
+    <p>Click the button to display the NodeList and converted Array, then highlight each element.</p>
+
+    <!-- Elements with the "item" class -->
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 4</div>
+
+    <!-- Buttons for interaction -->
+    <button id="showBtn">Show NodeList and Array</button>
+    <button id="highlightBtn">Highlight Elements</button>
+    <button id="resetBtn">Reset Color</button>
+
+    <!-- Sections to display the NodeList and Array -->
+    <div id="output" class="output-section">
+        <div id="nodeListDisplay">
+            <p class="output-title">NodeList (raw format):</p>
+        </div>
+        <div id="arrayDisplay">
+            <p class="output-title">Converted Array:</p>
+        </div>
+    </div>
+
+    <script>
+        // Select all elements with the "item" class using querySelectorAll
+        const itemsNodeList = document.querySelectorAll(".item");
+
+        // Convert the NodeList to an array
+        const itemsArray = Array.from(itemsNodeList);
+
+        // Function to display the NodeList and Array on the screen
+        function displayNodeListAndArray() {
+            const nodeListDisplay = document.getElementById("nodeListDisplay");
+            const arrayDisplay = document.getElementById("arrayDisplay");
+
+            // Clear any previous content
+            nodeListDisplay.innerHTML = '<p class="output-title">NodeList (raw format):</p>';
+            arrayDisplay.innerHTML = '<p class="output-title">Converted Array:</p>';
+
+            // Display each item in the NodeList
+            itemsNodeList.forEach((item, index) => {
+                const nodeListItem = document.createElement("div");
+                nodeListItem.classList.add("output-box");
+                nodeListItem.textContent = `NodeList Item ${index + 1}: ${item.textContent}`;
+                nodeListDisplay.appendChild(nodeListItem);
+            });
+
+            // Display each item in the Array
+            itemsArray.forEach((item, index) => {
+                const arrayItem = document.createElement("div");
+                arrayItem.classList.add("output-box");
+                arrayItem.textContent = `Array Item ${index + 1}: ${item.textContent}`;
+                arrayDisplay.appendChild(arrayItem);
+            });
+        }
+        // Function to highlight items by changing the background color
+        function highlightItems() {
+            itemsArray.forEach((item, index) => {
+                item.style.backgroundColor = "yellow";
+                item.textContent = `Item ${index + 1} - Highlighted`;
+            });
+        }
+        // Function to reset the original color of the items
+        function resetItems() {
+            itemsArray.forEach((item, index) => {
+                item.style.backgroundColor = "lightblue";
+                item.textContent = `Item ${index + 1}`;
+            });
+        }
+        // Assign event listeners to the buttons to execute the functions
+        document.getElementById("showBtn").addEventListener("click", displayNodeListAndArray);
+        document.getElementById("highlightBtn").addEventListener("click", highlightItems);
+        document.getElementById("resetBtn").addEventListener("click", resetItems);
+    </script>
+</body>
+
+</html>

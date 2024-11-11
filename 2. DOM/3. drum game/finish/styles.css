@@ -1,0 +1,122 @@
+/* Global styles */
+
+/* The body element encompasses the entire content of the page. */
+body {
+  /* Aligns the inner content of an element to the center. */
+  text-align: center;
+  /* Sets a specific background color for the body. */
+  background-color: #283149;
+}
+
+/* Heading styles */
+
+/* Specific styles for <h1> elements. */
+h1 {
+  /* Sets the font size of the text. */
+  font-size: 5rem;
+  /* Specifies the color of the text. */
+  color: #DBEDF3;
+  /* Defines which font should be used, with "Arvo" as the preferred font and "cursive" as the fallback. */
+  font-family: "Arvo", cursive;
+  /* Applies a shadow to the text. This shadow is 3 pixels to the right and has a color of #DA0463. */
+  text-shadow: 3px 0 #DA0463;
+}
+
+/* Footer styles */
+
+/* Styles specific to the <footer> element. */
+footer {
+  /* Sets the text color. */
+  color: #DBEDF3;
+  /* Specifies the font family, defaulting to the browser's sans-serif font if none is available. */
+  font-family: sans-serif;
+}
+
+/* Drum button styles with background images */
+
+/* Each of these classes corresponds to a drum button and has a unique background image. */
+.w {
+  background-image: url("images/tom1.png");
+}
+
+.a {
+  background-image: url("images/tom2.png");
+}
+
+.s {
+  background-image: url("images/tom3.png");
+}
+
+.d {
+  background-image: url("images/tom4.png");
+}
+
+.j {
+  background-image: url("images/snare.png");
+}
+
+.k {
+  background-image: url("images/crash.png");
+}
+
+.l {
+  background-image: url("images/kick.png");
+}
+
+/* Container styles */
+
+/* Styling for the div element that contains all drum buttons. */
+.set {
+  /* Margin property adjusts the space around the element. "10% auto" means 10% top and bottom margin, and auto left and right margins (which centers the element). */
+  margin: 10% auto;
+}
+
+/* Animation and utility styles */
+
+/* This class is applied to a drum button when it is pressed to give a visual feedback. */
+.pressed {
+  /* Applies a shadow effect to the element. */
+  box-shadow: 0 3px 4px 0 #DBEDF3;
+  /* Controls the transparency level of the element, making it appear "dimmed". */
+  opacity: 0.5;
+}
+
+/* A utility class to change the color of an element to red. */
+.red {
+  color: red;
+}
+
+/* Drum button styles */
+
+/* Styles for the drum buttons. */
+.drum {
+  /* Removes the default outline that browsers apply to clickable elements. */
+  outline: none;
+  /* Sets a solid border of 10 pixels with a specific color around the element. */
+  border: 10px solid #404B69;
+  /* Sets the font size of the text inside the button. */
+  font-size: 5rem;
+  /* Specifies the font to be used. */
+  font-family: 'Arvo', cursive;
+  /* Controls the height of lines of text. */
+  line-height: 2;
+  /* Sets the thickness of the font characters. */
+  font-weight: 900;
+  /* Sets the color of the text inside the button. */
+  color: #DA0463;
+  /* Applies a shadow effect to the text. */
+  text-shadow: 3px 0 #DBEDF3;
+  /* Rounds the corners of an element. */
+  border-radius: 15px;
+  /* Makes the element display inline, but also allows width, height, and margin. */
+  display: inline-block;
+  /* Sets the width and height of the button. */
+  width: 150px;
+  height: 150px;
+  /* Aligns the text inside the button to the center. */
+  text-align: center;
+  /* Adds space around the button. */
+  margin: 10px;
+  /* Sets the background color of the button. */
+  background-color: white;
+}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>XSS Attack Example</title>
+</head>
+
+<body>
+    <h1>XSS Attack Demonstration</h1>
+    <form>
+        <input type="text" id="inputField" placeholder="Enter script">
+        <button type="button" onclick="addComment()">Submit</button>
+    </form>
+    <div id="comments"></div>
+
+    <script>
+        function addComment() {
+            var userInput = document.getElementById('inputField').value;
+            document.getElementById('comments').innerHTML += `<p>${userInput}</p>`;
+        }
+    </script>
+</body>
+
+</html>

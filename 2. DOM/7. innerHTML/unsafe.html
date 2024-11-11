@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unsafe XSS Demo</title>
+</head>
+
+<body>
+    <h1>Unsafe Comment Form</h1>
+    <p><strong>Warning:</strong> This form is intentionally vulnerable to XSS for educational purposes.</p>
+
+    <form id="unsafeCommentForm">
+        <label for="unsafeComment">Comment:</label><br>
+        <textarea id="unsafeComment" name="unsafeComment"></textarea><br><br>
+        <button type="button" onclick="addUnsafeComment()">Submit Comment</button>
+    </form>
+
+    <h2>Comments</h2>
+    <div id="unsafeComments"></div>
+
+    <script>
+        function addUnsafeComment() {
+            var comment = document.getElementById('unsafeComment').value;
+            document.getElementById('unsafeComments').innerHTML += '<div>' + comment + '</div>';
+        }
+    </script>
+</body>
+
+</html>

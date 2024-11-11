@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Class Manipulation</title>
+    <style>
+        /* Basic styling for demonstration */
+        .box {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background-color: lightblue;
+            border: 2px solid blue;
+            display: inline-block;
+            transition: background-color 0.3s, opacity 0.3s;
+        }
+
+        /* Classes to add or toggle */
+        .invisible {
+            display: none;
+        }
+
+        .highlight {
+            background-color: yellow;
+        }
+
+        .faded {
+            opacity: 0.5;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Interactive Class Manipulation Example</h1>
+    <p>Click the buttons to add, remove, or toggle classes on the boxes below.</p>
+
+    <!-- Boxes to manipulate -->
+    <div id="box1" class="box">Box 1</div>
+    <div id="box2" class="box">Box 2</div>
+    <div id="box3" class="box">Box 3</div>
+
+    <!-- Buttons for manipulating classes -->
+    <button id="addHighlightBtn">Add "Highlight"</button>
+    <button id="removeHighlightBtn">Remove "Highlight"</button>
+    <button id="toggleFadedBtn">Toggle "Faded"</button>
+    <button id="toggleInvisibleBtn">Toggle "Invisible"</button>
+
+    <!-- Section to display the current class list -->
+    <div id="output" class="output-section">
+        <p><strong>Current Classes for Each Box:</strong></p>
+        <div id="box1Classes">Box 1: </div>
+        <div id="box2Classes">Box 2: </div>
+        <div id="box3Classes">Box 3: </div>
+    </div>
+
+    <script>
+        // Select the boxes
+        const box1 = document.getElementById("box1");
+        const box2 = document.getElementById("box2");
+        const box3 = document.getElementById("box3");
+
+        // Select the output elements for displaying current classes
+        const box1Classes = document.getElementById("box1Classes");
+        const box2Classes = document.getElementById("box2Classes");
+        const box3Classes = document.getElementById("box3Classes");
+
+        // Utility function to update the displayed class list for each box
+        function updateClassList() {
+            box1Classes.textContent = `Box 1: ${box1.classList.value}`;
+            box2Classes.textContent = `Box 2: ${box2.classList.value}`;
+            box3Classes.textContent = `Box 3: ${box3.classList.value}`;
+        }
+
+        // Function to add the "highlight" class to all boxes
+        document.getElementById("addHighlightBtn").addEventListener("click", function () {
+            box1.classList.add("highlight");
+            box2.classList.add("highlight");
+            box3.classList.add("highlight");
+            updateClassList();
+        });
+
+        // Function to remove the "highlight" class from all boxes
+        document.getElementById("removeHighlightBtn").addEventListener("click", function () {
+            box1.classList.remove("highlight");
+            box2.classList.remove("highlight");
+            box3.classList.remove("highlight");
+            updateClassList();
+        });
+
+        // Function to toggle the "faded" class on all boxes
+        document.getElementById("toggleFadedBtn").addEventListener("click", function () {
+            box1.classList.toggle("faded");
+            box2.classList.toggle("faded");
+            box3.classList.toggle("faded");
+            updateClassList();
+        });
+
+        // Function to toggle the "invisible" class on all boxes
+        document.getElementById("toggleInvisibleBtn").addEventListener("click", function () {
+            box1.classList.toggle("invisible");
+            box2.classList.toggle("invisible");
+            box3.classList.toggle("invisible");
+            updateClassList();
+        });
+
+        // Initial call to display the current class list for each box
+        updateClassList();
+    </script>
+</body>
+
+</html>

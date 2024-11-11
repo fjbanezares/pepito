@@ -1,0 +1,46 @@
+<!-- Start by declaring our document type. This tells the browser we're using HTML5. -->
+<!DOCTYPE html>
+<!-- Root HTML element. We're specifying our language as English and text direction as left-to-right. -->
+<html lang="en" dir="ltr">
+
+<head> <!-- The head section contains meta-information about the document. -->
+  <!-- Character encoding declaration for the document. UTF-8 includes a wide range of characters. -->
+  <meta charset="utf-8">
+  <!-- The title that appears on the browser tab. -->
+  <title>Drum Kit</title>
+  <!-- Linking an external stylesheet to style our webpage. -->
+  <link rel="stylesheet" href="styles.css">
+  <!-- Importing a custom font from Google Fonts. Because aesthetics matter! -->
+  <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+</head>
+
+<body> <!-- The body tag contains all the content that's rendered on the browser. -->
+
+  <!-- Our main heading. Also, who can resist an emoji in a title? -->
+  <h1 id="title">Drum 🥁 Kit</h1>
+
+  <!-- A container for our drum buttons. Let's keep things organized! -->
+  <div class="set">
+    <!-- Individual drum buttons. Each button corresponds to a different drum sound. -->
+    <!-- The class 'drum' is common to all, helping us select them easily using JavaScript. -->
+    <button class="w drum">w</button>
+    <button class="a drum">a</button>
+    <button class="s drum">s</button>
+    <button class="d drum">d</button>
+    <button class="j drum">j</button>
+    <button class="k drum">k</button>
+    <button class="l drum">l</button>
+  </div>
+
+  <!-- Linking our JavaScript file which contains the functionality for our drum kit. -->
+  <script src="index.js" charset="utf-8"></script>
+
+  <!-- A footer section to add any additional information, credits, or notes. -->
+  <footer>
+    <!-- A little signature note. Also, who said developers aren't romantic? -->
+    Made with ❤️ in London.
+  </footer>
+
+</body> <!-- End of the body content. -->
+
+</html> <!-- And we close our HTML document. That's a wrap! -->

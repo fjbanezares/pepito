@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NodeList and Array Conversion Example</title>
+    <style>
+        .item {
+            padding: 10px;
+            margin: 5px;
+            background-color: lightblue;
+            border: 1px solid blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Interactive NodeList Example</h1>
+    <p>Click the button to change the background color of each selected element.</p>
+
+    <!-- Elements with the "item" class -->
+    <div class="item">Item 1</div>
+    <div class="item">Item 2</div>
+    <div class="item">Item 3</div>
+    <div class="item">Item 4</div>
+
+    <!-- Buttons for interaction -->
+    <button id="highlightBtn">Highlight Elements</button>
+    <button id="resetBtn">Reset Color</button>
+
+    <script>
+        // Select all elements with the "item" class using querySelectorAll
+        const itemsNodeList = document.querySelectorAll(".item");
+
+        // Log the NodeList to see its structure
+        console.log("Original NodeList:", itemsNodeList);
+        // A NodeList is similar to an array but doesn’t support advanced array methods like map or filter.
+
+        // Convert the NodeList to an array using Array.from
+        const itemsArray = Array.from(itemsNodeList);
+
+        // Another way to convert would be using the spread operator:
+        // const itemsArray = [...itemsNodeList];
+
+        // Log the converted array to see the difference
+        console.log("Converted Array:", itemsArray);
+
+        // Function to highlight items by changing the background color
+        function highlightItems() {
+            itemsArray.forEach((item, index) => {
+                item.style.backgroundColor = "yellow";
+                item.textContent = `Item ${index + 1} - Highlighted`;
+            });
+        }
+
+        // Function to reset the original color of the items
+        function resetItems() {
+            itemsArray.forEach((item, index) => {
+                item.style.backgroundColor = "lightblue";
+                item.textContent = `Item ${index + 1}`;
+            });
+        }
+
+        // Assign event listeners to the buttons to execute the functions
+        document.getElementById("highlightBtn").addEventListener("click", highlightItems);
+        document.getElementById("resetBtn").addEventListener("click", resetItems);
+    </script>
+</body>
+
+</html>

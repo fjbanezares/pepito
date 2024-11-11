@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Functions</title>
+  <style>
+    .example {
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript Functions</h1>
+  
+  <div id="output"></div>
+
+  <script>
+    const output = document.getElementById('output');
+
+    function addExample(title, description) {
+      const example = document.createElement('div');
+      example.className = 'example';
+      example.innerHTML = `<h3>${title}</h3><pre>${description}</pre>`;
+      output.appendChild(example);
+    }
+
+    // Simple function
+    function greet() {
+      console.log("Hello, world!");
+    }
+    greet();
+    addExample("Simple function", "Hello, world!");
+
+    // Function with parameters
+    function add(a, b) {
+      console.log("Sum:", a + b);
+      return a+b;
+    }
+    add(5, 3);
+    addExample("Function with parameters", "Sum: 8");
+
+    // Function with return value
+    function multiply(a, b) {
+      return a * b;
+    }
+    const product = multiply(4, 6);
+    console.log("Product:", product);
+    addExample("Function with return value", `Product: ${product}`);
+
+    // Anonymous function (function expression)
+    var subtract = function(a, b) {
+      return a - b;
+    };
+    const difference = subtract(10, 3);
+    console.log("Difference:", difference);
+    addExample("Anonymous function (function expression)", `Difference: ${difference}`);
+
+    // Arrow function
+    const divide = (a, b) => a / b;
+    const quotient = divide(20, 5);
+    console.log("Quotient:", quotient);
+    addExample("Arrow function", `Quotient: ${quotient}`);
+
+    // Higher-order function (a function that takes a function as a parameter)
+    function applyOperation(a, b, operation) {
+      return operation(a, b);
+    }
+    const appliedOperation = applyOperation(3, 4, multiply);
+    console.log("Applied operation:", appliedOperation);
+    addExample("Higher-order function (function as a parameter)", `Applied operation: ${appliedOperation}`);
+
+    // Higher-order function with a callback function
+    function calculate(a, b, operation, callback) {
+      var result = operation(a, b);
+      callback(result);
+      return result;
+    }
+    calculate(5, 6, add, function(result) {
+      console.log("Callback result:", result);
+      addExample("Higher-order function with a callback", `Callback result: ${result}`);
+    });
+
+    // Function returning a function
+    function createExponentFunction(exponent) {
+      return function(base) {
+        return Math.pow(base, exponent);
+      };
+    }
+    var square = createExponentFunction(2);
+    var cube = createExponentFunction(3);
+    const squareResult = square(4);
+    const cubeResult = cube(4);
+    console.log("Square of 4:", squareResult);
+    console.log("Cube of 4:", cubeResult);
+    addExample("Function returning a function", `Square of 4: ${squareResult}\nCube of 4: ${cubeResult}`);
+  </script>
+</body>
+</html>

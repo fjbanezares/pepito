@@ -1,0 +1,12 @@
+{
+    "name": "mi-proyecto",
+    "version": "1.0.0",
+    "description": "Un proyecto de ejemplo que mezcla CommonJS y ES6",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "type": "module",
+    "author": "Tu Nombre",
+    "license": "ISC"
+}

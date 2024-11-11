@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>XSS with Input Example</title>
+</head>
+
+<body>
+    <p>insert something like : "var myVar = "This is a variable"; alert(myVar)"</p>
+    <p>insert something alert(pass)</p>
+
+    <input type="text" id="inputBox" value="alert('XSS!')">
+    <button onclick="eval(document.getElementById('inputBox').value)">Run</button>
+
+</body>
+
+<script>const pass = "1232154252"</script>
+
+</html>

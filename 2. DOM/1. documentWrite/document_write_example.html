@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>document.write() vs innerHTML Example</title>
+</head>
+
+<body>
+    <!-- Original content of the document -->
+    <h1>Welcome to My Page</h1>
+    <p>This is the original content of the page.</p>
+
+    <!-- Button to trigger document.write() after page load -->
+    <button id="overwriteBtn">Overwrite Content with document.write()</button>
+
+    <!-- Button to trigger innerHTML update instead of document.write() -->
+    <button id="safeUpdateBtn">Update Content Safely with innerHTML</button>
+
+    <!-- Div where the content will be safely updated with innerHTML -->
+    <div id="contentArea">
+        <p>This is the content area that can be updated safely without overwriting the whole page.</p>
+    </div>
+
+    <script>
+        // Example 1: Using document.write() after the page has loaded
+
+        // Select the "overwriteBtn" button and add a click event listener to it
+        document.getElementById("overwriteBtn").addEventListener("click", function () {
+            // When the button is clicked, this code runs after the page has fully loaded.
+            // Since we're using document.write() here, it will overwrite the ENTIRE document content.
+
+            // WARNING: The following lines will remove everything on the page and replace it with this new content.
+            document.write("<h1>Overwritten Content</h1>"); // Inserts a new <h1> tag into the document
+            document.write("<p>The original content has been overwritten using document.write().</p>"); // Inserts a new <p> tag
+
+            // At this point, the entire original content (including this script) is gone.
+            // The document now only contains the <h1> and <p> elements written by document.write().
+        });
+
+        // Example 2: Using innerHTML for safer content update
+
+        // Select the "safeUpdateBtn" button and add a click event listener to it
+        document.getElementById("safeUpdateBtn").addEventListener("click", function () {
+            // Select the specific element where we want to update the content safely
+            const contentDiv = document.getElementById("contentArea");
+
+            // Use innerHTML to update only the inner content of contentDiv
+            // This does NOT overwrite the entire document, only the content inside #contentArea
+            contentDiv.innerHTML = "<h1>Updated Content</h1><p>This content was safely updated using innerHTML.</p>";
+
+            // The rest of the page remains unchanged.
+            // This is the preferred method for dynamically updating content after the page has loaded.
+        });
+    </script>
+</body>
+
+</html>

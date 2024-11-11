@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Scope Demonstration</title>
+</head>
+
+<body>
+    <h2>Global Scope Declaration Demonstration</h2>
+    <p id="varResult"></p>
+    <p id="letResult"></p>
+    <p id="constResult"></p>
+
+    <script>
+        // Using 'var' at the global level creates a global variable
+        // that is also attached to the 'window' object.
+        var globalVar = "This is declared with 'var'.";
+
+        // Using 'let' at the global level creates a global variable
+        // but it's NOT attached to the 'window' object.
+        let globalLet = "This is declared with 'let'.";
+
+        // Using 'const' at the global level creates a global variable 
+        // that, like 'let', is NOT attached to the 'window' object.
+        const globalConst = "This is declared with 'const'.";
+
+        // Displaying results in the browser using DOM manipulation
+        document.getElementById("varResult").textContent = "globalVar: " + globalVar + " | window.globalVar: " + window.globalVar;
+
+        // Notice that accessing 'window.globalLet' will be 'undefined'
+        document.getElementById("letResult").textContent = "globalLet: " + globalLet + " | window.globalLet: " + window.globalLet;
+
+        // Similarly, accessing 'window.globalConst' will be 'undefined'
+        document.getElementById("constResult").textContent = "globalConst: " + globalConst + " | window.globalConst: " + window.globalConst;
+
+        // Why aren't 'let' and 'const' attached to the 'window' object?
+        // It's by design to avoid potential issues and unintentional overwriting
+        // of global properties. 'let' and 'const' provide a safer way to declare
+        // global variables without risking unintentional interference with the
+        // global object's properties.
+    </script>
+</body>
+
+</html>

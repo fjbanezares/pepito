@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MongoDB Practice</title>
+</head>
+
+<body>
+
+    <!-- Add an author -->
+    <form action="http://localhost:3000/authors" method="post">
+        <h3>Add Author:</h3>
+        <label for="authorName">Name:</label>
+        <input type="text" id="authorName" name="name" required>
+        <br>
+        <label for="authorEmail">Email:</label>
+        <input type="email" id="authorEmail" name="email" required>
+        <br>
+        <button type="submit">Add Author</button>
+    </form>
+    <hr>
+
+    <!-- Add a post (normalized) -->
+    <form action="http://localhost:3000/posts" method="post">
+        <h3>Add Post with Author Reference:</h3>
+        <label for="title">Title:</label>
+        <input type="text" id="title" name="title" required>
+        <br>
+        <label for="content">Content:</label>
+        <textarea id="content" name="content" required></textarea>
+        <br>
+        <label for="authorId">Author ID:</label>
+        <input type="text" id="authorId" name="authorId" required>
+        <br>
+        <button type="submit">Add Post</button>
+    </form>
+    <hr>
+
+    <!-- Add a post (denormalized) -->
+    <form action="http://localhost:3000/denormalized/posts" method="post">
+        <h3>Add Post with Embedded Author:</h3>
+        <label for="dTitle">Title:</label>
+        <input type="text" id="dTitle" name="title" required>
+        <br>
+        <label for="dContent">Content:</label>
+        <textarea id="dContent" name="content" required></textarea>
+        <br>
+        <label>Author:</label>
+        <br>
+        <label for="dAuthorName">Name:</label>
+        <input type="text" id="dAuthorName" name="author[name]" required>
+        <br>
+        <label for="dAuthorEmail">Email:</label>
+        <input type="email" id="dAuthorEmail" name="author[email]" required>
+        <br>
+        <button type="submit">Add Post</button>
+    </form>
+
+    <!-- You may want to add additional forms for fetching data, or modify actions based on your API endpoints. -->
+
+    <script>
+        // Optional: Add client-side JavaScript logic if needed
+    </script>
+
+</body>
+
+</html>

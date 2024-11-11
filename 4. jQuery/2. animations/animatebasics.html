@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        #element {
+            position: relative;
+            background-color: red;
+            width: 100px;
+            height: 100px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+
+    <button id="slideUpButton">Slide Up</button>
+    <button id="slideDownButton">Slide Down</button>
+    <button id="slideToggleButton">Slide Toggle</button>
+    <br>
+    <button id="fadeInButton">Fade In</button>
+    <button id="fadeOutButton">Fade Out</button>
+    <button id="fadeToggleButton">Fade Toggle</button>
+    <br>
+    <button id="animateButton">Animate</button>
+    <button id="animateButton2">unAnimate</button>
+
+    <br>
+    <div id="element"></div>
+
+    <script>
+        $("#slideUpButton").click(function () {
+            $("#element").slideUp();
+        });
+
+        $("#slideDownButton").click(function () {
+            $("#element").slideDown();
+        });
+
+        $("#slideToggleButton").click(function () {
+            $("#element").slideToggle();
+        });
+
+        $("#fadeInButton").click(function () {
+            $("#element").fadeIn();
+        });
+
+        $("#fadeOutButton").click(function () {
+            $("#element").fadeOut();
+        });
+
+        $("#fadeToggleButton").click(function () {
+            $("#element").fadeToggle();
+        });
+
+        $("#animateButton").click(function () {
+            $("#element").animate({
+                left: '450px',
+                opacity: '0.5',
+                height: '350px',
+                width: '350px'
+            });
+        });
+
+        $("#animateButton2").click(function () {
+            $("#element").animate({
+                left: '0px',
+                opacity: '1',
+                width: '100px',
+                height: '100px'
+            });
+        });
+    </script>
+
+</body>
+
+</html>

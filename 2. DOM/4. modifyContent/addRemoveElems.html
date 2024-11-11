@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add and Remove Elements</title>
+</head>
+
+<body>
+
+    <!-- Button to add a new element -->
+    <button id="addElementBtn">Add New Element</button>
+
+    <!-- Some placeholder content -->
+    <div id="content">
+        <div id="removeMe">Element to Remove</div>
+    </div>
+
+    <!-- Button to remove an element -->
+    <button id="removeElementBtn">Remove Element</button>
+
+    <script>
+        // Listen for a click event on the 'Add New Element' button
+        document.getElementById('addElementBtn').addEventListener('click', function () {
+            // Create a new div element
+            const newElement = document.createElement('div');
+            newElement.innerHTML = "I'm a new element!";
+            // Append the new element to the body of the document
+            document.body.appendChild(newElement);
+        });
+
+        // Listen for a click event on the 'Remove Element' button
+        document.getElementById('removeElementBtn').addEventListener('click', function () {
+            // Select the element with the ID 'removeMe'
+            const elementToRemove = document.getElementById('removeMe');
+            // Remove the selected element
+            elementToRemove.parentNode.removeChild(elementToRemove);
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Variable Declaration Examples</title>
+</head>
+<body>
+  <h1>JavaScript Variable Declaration Examples</h1>
+  
+  <h2>Function-scoped (var)</h2>
+  <button onclick="exampleVarFunction()">Click me to show var example</button>
+  <p id="var-example"></p>
+
+  <h2>Block-scoped (let)</h2>
+  <button onclick="exampleLetFunction()">Click me to show let example</button>
+  <p id="let-example"></p>
+
+  <h2>Hoisting (var)</h2>
+  <button onclick="exampleHoistingFunction()">Click me to show hoisting example</button>
+  <p id="hoisting-example"></p>
+
+  <h2>Global scope leakage (var)</h2>
+  <button onclick="exampleGlobalScopeFunction()">Click me to show global scope leakage example</button>
+  <p id="global-scope-example"></p>
+
+  <script>
+    function exampleVarFunction() {
+      var output = '';
+
+      function exampleFunction() {
+        if (true) {
+          var x = 10;
+        }
+        output = 'Value of x: ' + x;
+      }
+
+      exampleFunction();
+      document.getElementById('var-example').textContent = output;
+    }
+
+    function exampleLetFunction() {
+      var output = '';
+
+      function exampleFunction() {
+        if (true) {
+          let y = 20;
+          output = 'Inside the block: Value of y: ' + y;
+        }
+        try {
+          output += ', Outside the block: Value of y: ' + y;
+        } catch (error) {
+          output += ', Outside the block: y is not defined';
+        }
+      }
+
+      exampleFunction();
+      document.getElementById('let-example').textContent = output;
+    }
+
+    function exampleHoistingFunction() {
+      var output = '';
+
+      function exampleFunction() {
+        try {
+          output = 'Before declaration: Value of z: ' + z;
+        } catch (error) {
+          output = 'Before declaration: z is not defined';
+        }
+        var z = 30;
+        output += ', After declaration: Value of z: ' + z;
+      }
+
+      exampleFunction();
+      document.getElementById('hoisting-example').textContent = output;
+    }
+
+    function exampleGlobalScopeFunction() {
+      var output = '';
+
+      function exampleFunction() {
+        w = 40; // Forgot to use 'var', 'let', or 'const', so w becomes a global variable
+      }
+
+      exampleFunction();
+      output = 'Global scope leakage: Value of w: ' + w;
+
+      document.getElementById('global-scope-example').textContent = output;
+    }
+  </script>
+</body>
+</html>
