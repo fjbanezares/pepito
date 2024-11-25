@@ -1,24 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- Declares the document type and specifies that this is an HTML5 document. -->
+<!-- The `lang="en"` attribute specifies that the document is in English, useful for accessibility tools and SEO. -->
 
 <head>
+    <!-- The <head> section contains metadata and resources used by the HTML document. -->
+
     <meta charset="UTF-8">
+    <!-- Specifies the character encoding for the document. UTF-8 supports most characters used in modern web pages. -->
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Configures the viewport for responsive design, ensuring the page scales well on mobile devices. -->
+
     <title>Weather App</title>
+    <!-- Defines the title of the web page, which appears in the browser tab and is used by search engines. -->
+
     <link rel="stylesheet" href="styles.css">
+    <!-- Links an external CSS file named `styles.css` to style the HTML elements.
+         Ensure `styles.css` exists in the same directory as this HTML file. -->
 </head>
 
 <body>
+    <!-- The <body> section contains the main content of the web page that will be visible to the user. -->
+
     <h1>Weather App</h1>
+    <!-- Main heading for the application, displayed prominently at the top of the page. -->
+
     <form method="post" action="/" id="weather-form" enctype="application/x-www-form-urlencoded">
-        <!-- <form method="post" action="/" id="weather-form"> -->
+        <!-- The <form> element allows users to submit input data to the server.
+             - `method="post"`: Specifies that the form data will be sent using the POST HTTP method.
+             - `action="/"`: Defines the server endpoint that will handle the form submission (root path `/`).
+             - `id="weather-form"`: Assigns a unique identifier to the form, useful for styling or scripting.
+             - `enctype="application/x-www-form-urlencoded"`: Sets the encoding type for form data. This is the default for POST requests with text input. -->
+
         <label for="city">City:</label>
+        <!-- The <label> element defines a text label for the input field with `name="city"`.
+             - The `for="city"` attribute is used for accessibility and links the label to the input field. -->
+
         <input type="text" name="city" required>
-        <!-- <input type="text" id="city" required> -->
+        <!-- Input field where users enter the city name.
+             - `type="text"`: Specifies a single-line text input.
+             - `name="city"`: Assigns a name to the input, which is used as the key when sending form data to the server.
+             - `required`: Ensures the input cannot be left blank before the form is submitted. -->
+
         <button type="submit">Get Weather</button>
+        <!-- Submit button to send the form data to the server.
+             - `type="submit"`: Specifies that this button will submit the form when clicked. -->
+
     </form>
+
     <div id="weather-info"></div>
+    <!-- Placeholder <div> to dynamically display weather information if JavaScript is used to handle API responses directly.
+         - `id="weather-info"`: Assigns an ID for easier access via JavaScript or styling with CSS. -->
+
     <script src="app.js"></script>
+    <!-- Links an external JavaScript file named `app.js`.
+         Ensure that `app.js` exists in the same directory and contains the required client-side JavaScript logic. -->
 </body>
 
 </html>
