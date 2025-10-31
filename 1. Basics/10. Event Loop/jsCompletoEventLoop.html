@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplo de Eventos</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 20px;
+            color: red;
+        }
+
+        input {
+            font-size: 1.2em;
+            padding: 5px;
+        }
+
+        #resultados {
+            margin-top: 20px;
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Buscador de Productos</h1>
+    <p>Escribe en la caja. La búsqueda se lanzará 500ms después de que dejes de teclear.</p>
+
+    <input type="text" id="cuadroBusqueda" placeholder="Ej: 'camiseta', 'zapatos'...">
+
+    <div id="resultados"></div>
+
+    <script>
+        // ----- Aquí comienza la lógica de eventos -----
+
+        // [EVENTO 1: DOMContentLoaded]
+        // Primero, esperamos a que el NAVEGADOR dispare el evento
+        // de que el HTML está listo y cargado.
+        document.addEventListener('DOMContentLoaded', () => {
+
+            console.log('EVENTO: DOM listo. Añadiendo listeners...');
+
+            // Obtenemos las referencias a nuestros elementos del DOM
+            const input = document.getElementById('cuadroBusqueda');
+            const resultados = document.getElementById('resultados');
+
+            // Esta variable guardará la ID de nuestro temporizador.
+            // Es la clave del "debounce".
+            let temporizadorID = null;
+
+            // [EVENTO 2: keyup]
+            // Añadimos un "listener" (una trampa) para el evento 'keyup'.
+            // Esta función se ejecutará CADA VEZ que el usuario suelte una tecla.
+            input.addEventListener('keyup', (e) => {
+                // 'e' es el objeto del evento, contiene info (ej: e.target.value)
+                const query = e.target.value;
+
+                // Cada vez que tecleas, borramos el temporizador anterior.
+                // Esto ANULA la búsqueda que estaba programada.
+                clearTimeout(temporizadorID);
+
+                resultados.textContent = `Escribiendo: "${query}"...`;
+
+                // [EVENTO 3: setTimeout (Finalización del temporizador)]
+                // Creamos un NUEVO temporizador. Esto es asíncrono.
+                // Le decimos al navegador: "Espera 500ms... y LUEGO
+                // dispara el evento 'temporizador_terminado', 
+                // que ejecutará la función 'buscarEnAPI'".
+                temporizadorID = setTimeout(() => {
+                    buscarEnAPI(query);
+                }, 500); // 500 milisegundos
+            });
+        });
+
+        // Esta es la función que realmente "busca".
+        function buscarEnAPI(terminoBusqueda) {
+            if (terminoBusqueda.trim() === '') {
+                resultados.textContent = 'pepito';
+                return;
+            }
+
+            console.log(`EVENTO: Temporizador terminado. Buscando "${terminoBusqueda}"...`);
+            resultados.textContent = `Buscando en la API: "${terminoBusqueda}"...`;
+
+            // fetch() es una Promesa. Inicia un proceso asíncrono de RED.
+            // Usamos una API de prueba.
+            fetch(`https://dummyjson.com/products/search?q=${terminoBusqueda}`)
+                .then(response => response.json()) // [EVENTO 4: Llegada de la respuesta]
+                .then(data => {
+                    // [EVENTO 5: Datos (JSON) listos]
+                    // Esta es la Micro-task final.
+                    console.log(`EVENTO: Datos de la API recibidos para "${terminoBusqueda}".`);
+                    if (data.products && data.products.length > 0) {
+                        resultados.innerHTML = `Resultados encontrados (${data.products.length}):
+              <ul>
+                ${data.products.map(p => `<li>${p.title} - $${p.price}</li>`).join('')}
+              </ul>`;
+                    } else {
+                        resultados.textContent = `No se encontraron resultados para "${terminoBusqueda}".`;
+                    }
+                })
+                .catch(error => {
+                    // [EVENTO 6: Error de red]
+                    // El evento 'error' se dispara si la red falla.
+                    console.error('EVENTO: Fallo en la red.', error);
+                    resultados.textContent = 'Error al conectar con el servidor.';
+                });
+        }
+
+    </script>
+</body>
+
+</html>

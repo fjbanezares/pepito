@@ -61,6 +61,12 @@ app.get("/", (req, res) => {
   res.send("Hello"); // Sends "Hello" as the response body.
 });
 
+app.put("/:uyfgfu", (req, res) => {
+  const uyfgfu = req.params.uyfgfu; // Accede al parámetro de la URL
+  res.send(`Hello ${uyfgfu}`); // Utiliza la variable en la respuesta
+});
+
+
 // Start the Express server on the specified port.
 // This makes the server listen for incoming HTTP requests.
 app.listen(port, () => {
